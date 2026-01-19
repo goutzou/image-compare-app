@@ -1,0 +1,18 @@
+{
+  "imageScores": {
+    "/images/cool_guy.jpeg": {
+      "total": 473,
+      "votes": 137
+    },
+    "/images/cow.jpeg": {
+      "total": 473,
+      "votes": 137
+    }
+  },
+  "pairScores": {
+    "/images/cool_guy.jpeg__/images/cow.jpeg": {
+      "total": 473,
+      "votes": 137
+    }
+  }
+}
