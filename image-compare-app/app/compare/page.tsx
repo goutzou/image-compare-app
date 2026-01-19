@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
@@ -17,6 +16,7 @@ export default function Home() {
   const [role, setRole] = useState<Role | null>(null);
   const [authChecked, setAuthChecked] = useState(false);
   const pairStartRef = useRef<number | null>(null);
+  const [username, setUsername] = useState<string | null>(null);
 
   // Fetch a new random image pair
   async function loadPair() {
@@ -45,6 +45,7 @@ export default function Home() {
         rating,
         timestamp: new Date().toISOString(),
         durationMs,
+        username,
       }),
     });
 
@@ -71,6 +72,7 @@ export default function Home() {
       return;
     }
     setRole(storedRole);
+    setUsername(window.localStorage.getItem("username"));
     setAuthChecked(true);
   }, [router]);
 
@@ -139,6 +141,9 @@ export default function Home() {
             setAnswersCount(0);
             setFinished(false);
             setStarted(true);
+            if (role === "admin") {
+              router.push("/admin");
+            }
           }}
           className="px-10 py-4 text-lg font-semibold rounded-2xl shadow-lg 
                      bg-gradient-to-r from-amber-400 to-orange-500 text-white 
@@ -158,27 +163,15 @@ export default function Home() {
       className="min-h-screen bg-gradient-to-br from-amber-100 via-stone-100 to-amber-200 
                     flex flex-col items-center justify-center text-stone-900 px-4 animate-fadeIn"
     >
-      {role === "admin" ? (
-        <div className="absolute top-6 right-6">
-          <Link
-            href="/scores"
-            className="px-4 py-2 text-sm font-semibold rounded-xl shadow-md 
-                       bg-white/90 text-stone-900 border border-stone-300 
-                       hover:shadow-lg hover:scale-105 transition-all duration-300"
-          >
-            Look at scores
-          </Link>
-        </div>
-      ) : null}
-      <h1 className="text-4xl font-semibold mb-10 tracking-wide text-stone-900 drop-shadow-sm">
+      <h1 className="text-3xl sm:text-4xl font-semibold mb-8 sm:mb-10 tracking-wide text-stone-900 drop-shadow-sm">
         Image Comparison
       </h1>
 
-      <div className="flex gap-10 items-center">
+      <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 items-center">
         {[imgA, imgB].map((src, idx) => (
           <div
             key={idx}
-            className="w-80 h-80 bg-white/80 backdrop-blur-sm border border-stone-300 
+            className="w-64 h-64 sm:w-80 sm:h-80 bg-white/80 backdrop-blur-sm border border-stone-300 
                        rounded-2xl overflow-hidden shadow-xl flex items-center justify-center"
           >
             {!loading && src ? (
@@ -196,7 +189,7 @@ export default function Home() {
       {/* -------------------------------------------------------
           TWO-OPTION RATING BUTTONS
           ------------------------------------------------------- */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10 w-full max-w-xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mt-8 sm:mt-10 w-full max-w-xl">
         <button
           onClick={() => submit(1)}
           className="px-6 py-4 text-lg font-semibold rounded-2xl text-white

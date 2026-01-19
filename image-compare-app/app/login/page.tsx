@@ -39,7 +39,7 @@ export default function LoginPage() {
 
       window.localStorage.setItem("role", data.role);
       window.localStorage.setItem("username", username);
-      router.push("/compare");
+      router.push(data.role === "admin" ? "/admin" : "/compare");
     } catch {
       setError("Login failed. Please try again.");
     } finally {

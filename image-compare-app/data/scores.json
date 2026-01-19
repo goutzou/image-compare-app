@@ -1,21 +1,31 @@
 {
   "imageScores": {
     "/images/cool_guy.jpeg": {
-      "total": 484,
-      "votes": 167
+      "total": 490,
+      "votes": 197
     },
     "/images/cow.jpeg": {
-      "total": 484,
-      "votes": 167
+      "total": 490,
+      "votes": 197
     }
   },
   "pairScores": {
     "/images/cool_guy.jpeg__/images/cow.jpeg": {
-      "total": 484,
-      "votes": 167,
-      "totalTimeMs": 6780,
+      "total": 490,
+      "votes": 197,
+      "totalTimeMs": 16914,
+      "timeVotes": 50,
+      "avgTimeMs": 338
+    }
+  },
+  "userScores": {
+    "admin01": {
+      "total": 2,
+      "votes": 20,
+      "totalTimeMs": 5334,
       "timeVotes": 20,
-      "avgTimeMs": 339
+      "avgTimeMs": 267,
+      "lastAnsweredAt": "2026-01-19T21:15:04.460Z"
     }
   }
 }

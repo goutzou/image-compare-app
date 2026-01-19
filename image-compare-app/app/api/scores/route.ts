@@ -14,19 +14,25 @@ type ScoreEntry = {
 type ScoresFile = {
   imageScores: Record<string, ScoreEntry>;
   pairScores: Record<string, ScoreEntry>;
+  userScores?: Record<string, ScoreEntry & { lastAnsweredAt?: string }>;
 };
 
 function loadScores(): ScoresFile {
   const filePath = path.resolve("./data/scores.json");
   if (!fs.existsSync(filePath)) {
-    return { imageScores: {}, pairScores: {} };
+    return { imageScores: {}, pairScores: {}, userScores: {} };
   }
 
   try {
     const raw = fs.readFileSync(filePath, "utf8");
-    return JSON.parse(raw) as ScoresFile;
+    const parsed = JSON.parse(raw) as ScoresFile;
+    return {
+      imageScores: parsed.imageScores || {},
+      pairScores: parsed.pairScores || {},
+      userScores: parsed.userScores || {},
+    };
   } catch {
-    return { imageScores: {}, pairScores: {} };
+    return { imageScores: {}, pairScores: {}, userScores: {} };
   }
 }
 
