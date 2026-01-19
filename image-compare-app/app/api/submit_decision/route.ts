@@ -54,14 +54,42 @@ function updateImageScore(image: string, rating: number) {
 // ------------------------------------------------------------
 // Update cumulative pair-level score
 // ------------------------------------------------------------
-function updatePairScore(imgA: string, imgB: string, rating: number) {
+function updatePairScore(
+  imgA: string,
+  imgB: string,
+  rating: number,
+  durationMs: number | null,
+) {
   const key = [imgA, imgB].sort().join("__");
 
   if (!pairScores[key]) {
-    pairScores[key] = { total: 0, votes: 0 };
+    pairScores[key] = {
+      total: 0,
+      votes: 0,
+      totalTimeMs: 0,
+      timeVotes: 0,
+      avgTimeMs: 0,
+    };
+  }
+  if (typeof pairScores[key].totalTimeMs !== "number") {
+    pairScores[key].totalTimeMs = 0;
+  }
+  if (typeof pairScores[key].timeVotes !== "number") {
+    pairScores[key].timeVotes = 0;
+  }
+  if (typeof pairScores[key].avgTimeMs !== "number") {
+    pairScores[key].avgTimeMs = 0;
   }
   pairScores[key].total += rating;
   pairScores[key].votes += 1;
+  if (typeof durationMs === "number") {
+    pairScores[key].totalTimeMs += durationMs;
+    pairScores[key].timeVotes += 1;
+    pairScores[key].avgTimeMs =
+      pairScores[key].timeVotes > 0
+        ? Math.round(pairScores[key].totalTimeMs / pairScores[key].timeVotes)
+        : 0;
+  }
 }
 
 // ------------------------------------------------------------
@@ -70,7 +98,11 @@ function updatePairScore(imgA: string, imgB: string, rating: number) {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { imgA, imgB, rating, timestamp } = body;
+    const { imgA, imgB, rating, timestamp, durationMs } = body;
+    const normalizedDurationMs =
+      typeof durationMs === "number" && Number.isFinite(durationMs)
+        ? Math.max(0, Math.round(durationMs))
+        : null;
 
     if (!imgA || !imgB || typeof rating !== "number") {
       return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
@@ -78,7 +110,7 @@ export async function POST(req: Request) {
 
     updateImageScore(imgA, rating);
     updateImageScore(imgB, rating);
-    updatePairScore(imgA, imgB, rating);
+    updatePairScore(imgA, imgB, rating, normalizedDurationMs);
 
     // Save persistent data to disk
     saveScores();

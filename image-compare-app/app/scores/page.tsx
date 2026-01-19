@@ -6,6 +6,9 @@ import ScoresAuthGate from "./AuthGate";
 type ScoreEntry = {
   total: number;
   votes: number;
+  totalTimeMs?: number;
+  timeVotes?: number;
+  avgTimeMs?: number;
 };
 
 type ScoresFile = {
@@ -82,6 +85,13 @@ export default function ScoresPage() {
               const { imgA, imgB } = parsePairKey(key);
               const avg =
                 score.votes > 0 ? (score.total / score.votes).toFixed(2) : "0";
+              const timeVotes = score.timeVotes || 0;
+              const avgTimeMs =
+                typeof score.avgTimeMs === "number"
+                  ? score.avgTimeMs
+                  : timeVotes > 0 && typeof score.totalTimeMs === "number"
+                    ? Math.round(score.totalTimeMs / timeVotes)
+                    : 0;
 
               return (
                 <div
@@ -94,7 +104,8 @@ export default function ScoresPage() {
                       {imgA} <span className="text-stone-500">vs</span> {imgB}
                     </div>
                     <div className="text-sm text-stone-700">
-                      Avg: {avg} | Votes: {score.votes} | Total: {score.total}
+                      Avg: {avg} | Votes: {score.votes} | Total: {score.total} |
+                      Avg time: {avgTimeMs} ms
                     </div>
                   </div>
                 </div>

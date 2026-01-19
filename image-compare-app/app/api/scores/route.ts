@@ -6,6 +6,9 @@ import path from "path";
 type ScoreEntry = {
   total: number;
   votes: number;
+  totalTimeMs?: number;
+  timeVotes?: number;
+  avgTimeMs?: number;
 };
 
 type ScoresFile = {
@@ -28,16 +31,26 @@ function loadScores(): ScoresFile {
 }
 
 function toCsv(scores: ScoresFile) {
-  const header = "imgA,imgB,total,votes,avg";
+  const header = "imgA,imgB,total,votes,avg,totalTimeMs,timeVotes,avgTimeMs";
   const rows = Object.entries(scores.pairScores).map(([key, score]) => {
     const [imgA, imgB] = key.split("__");
     const avg = score.votes > 0 ? score.total / score.votes : 0;
+    const timeVotes = score.timeVotes || 0;
+    const avgTimeMs =
+      typeof score.avgTimeMs === "number"
+        ? score.avgTimeMs
+        : timeVotes > 0 && typeof score.totalTimeMs === "number"
+          ? score.totalTimeMs / timeVotes
+          : 0;
     return [
       imgA || "",
       imgB || "",
       String(score.total),
       String(score.votes),
       avg.toFixed(4),
+      String(score.totalTimeMs ?? 0),
+      String(timeVotes),
+      avgTimeMs.toFixed(2),
     ]
       .map((val) => `"${val.replaceAll(`"`, `""`)}"`)
       .join(",");

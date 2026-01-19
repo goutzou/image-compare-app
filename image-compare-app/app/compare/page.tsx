@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Role = "admin" | "user";
 
@@ -16,6 +16,7 @@ export default function Home() {
   const [finished, setFinished] = useState(false);
   const [role, setRole] = useState<Role | null>(null);
   const [authChecked, setAuthChecked] = useState(false);
+  const pairStartRef = useRef<number | null>(null);
 
   // Fetch a new random image pair
   async function loadPair() {
@@ -24,11 +25,17 @@ export default function Home() {
     const data = await res.json();
     setImgA(data.imgA);
     setImgB(data.imgB);
+    pairStartRef.current = performance.now();
     setLoading(false);
   }
 
   // Submit rating 1–5
   async function submit(rating: number) {
+    const now = performance.now();
+    const durationMs =
+      pairStartRef.current === null
+        ? null
+        : Math.max(0, Math.round(now - pairStartRef.current));
     await fetch("/api/submit_decision", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -37,6 +44,7 @@ export default function Home() {
         imgB,
         rating,
         timestamp: new Date().toISOString(),
+        durationMs,
       }),
     });
 
