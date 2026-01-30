@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "image-compare-app/package.json", "use": "@vercel/next" }
+  ]
+}
