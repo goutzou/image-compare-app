@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 type Role = "admin" | "user";
+type Pair = { imgA: string; imgB: string };
+type PairsResponse = { similarPairs?: Pair[]; differentPairs?: Pair[] };
 
 export default function Home() {
   const router = useRouter();
@@ -17,15 +19,49 @@ export default function Home() {
   const [authChecked, setAuthChecked] = useState(false);
   const pairStartRef = useRef<number | null>(null);
   const [username, setUsername] = useState<string | null>(null);
+  const [pairs, setPairs] = useState<Pair[]>([]);
+  const [pairIndex, setPairIndex] = useState(0);
 
-  // Fetch a new random image pair
-  async function loadPair() {
+  function shufflePairs(list: Pair[]) {
+    const shuffled = [...list];
+    for (let i = shuffled.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
+
+  // Fetch all possible pairs and start a new test
+  async function loadTest() {
     setLoading(true);
-    const res = await fetch("/api/next_pair");
-    const data = await res.json();
-    setImgA(data.imgA);
-    setImgB(data.imgB);
-    pairStartRef.current = performance.now();
+    const res = await fetch("/api/pairs");
+    const data = (await res.json()) as PairsResponse;
+    const similarPairs = Array.isArray(data.similarPairs)
+      ? data.similarPairs
+      : [];
+    const differentPairs = Array.isArray(data.differentPairs)
+      ? data.differentPairs
+      : [];
+    const targetCount = 20;
+    const shuffledDifferent = shufflePairs(differentPairs);
+    let selected = [...similarPairs];
+    if (selected.length < targetCount) {
+      selected = selected.concat(
+        shuffledDifferent.slice(0, targetCount - selected.length),
+      );
+    } else if (selected.length > targetCount) {
+      selected = selected.slice(0, targetCount);
+    }
+    setPairs(selected);
+    setPairIndex(0);
+    if (selected.length > 0) {
+      setImgA(selected[0].imgA);
+      setImgB(selected[0].imgB);
+      pairStartRef.current = performance.now();
+    } else {
+      setImgA(null);
+      setImgB(null);
+    }
     setLoading(false);
   }
 
@@ -51,18 +87,26 @@ export default function Home() {
 
     setAnswersCount((prev) => {
       const next = prev + 1;
-      if (next >= 10) {
+      if (next >= 20 || next >= pairs.length) {
         setFinished(true);
         return next;
       }
-      loadPair();
+      const nextPair = pairs[next];
+      if (nextPair) {
+        setPairIndex(next);
+        setImgA(nextPair.imgA);
+        setImgB(nextPair.imgB);
+        pairStartRef.current = performance.now();
+      }
       return next;
     });
   }
 
   useEffect(() => {
-    if (started && !finished) loadPair();
-  }, [started, finished]);
+    if (started && !finished && pairs.length === 0) {
+      loadTest();
+    }
+  }, [started, finished, pairs.length]);
 
   useEffect(() => {
     const storedRole = window.localStorage.getItem("role");
@@ -103,7 +147,7 @@ export default function Home() {
   if (!started) {
     return (
       <div
-        className="min-h-screen bg-gradient-to-br from-amber-100 via-stone-100 to-amber-200 
+        className="min-h-screen bg-gradient-to-br from-sky-100 via-slate-100 to-blue-200 
                       flex flex-col items-center justify-center text-stone-800 px-6 text-center animate-fadeIn"
       >
         <h1 className="text-5xl font-bold mb-6 tracking-wide text-stone-900 drop-shadow-sm">
@@ -118,7 +162,7 @@ export default function Home() {
         <button
           onClick={() => setStarted(true)}
           className="px-10 py-4 text-lg font-semibold rounded-2xl shadow-lg 
-                     bg-gradient-to-r from-amber-400 to-orange-500 text-white 
+                     bg-gradient-to-r from-blue-500 to-sky-600 text-white 
                      hover:scale-105 hover:shadow-xl transition-all duration-300"
         >
           Let’s Get Started
@@ -130,7 +174,7 @@ export default function Home() {
   if (finished) {
     return (
       <div
-        className="min-h-screen bg-gradient-to-br from-amber-100 via-stone-100 to-amber-200 
+        className="min-h-screen bg-gradient-to-br from-sky-100 via-slate-100 to-blue-200 
                       flex flex-col items-center justify-center text-stone-800 px-6 text-center animate-fadeIn"
       >
         <h1 className="text-5xl font-bold mb-6 tracking-wide text-stone-900 drop-shadow-sm">
@@ -140,13 +184,16 @@ export default function Home() {
           onClick={() => {
             setAnswersCount(0);
             setFinished(false);
-            setStarted(true);
             if (role === "admin") {
               router.push("/admin");
+              return;
             }
+            setPairs([]);
+            setPairIndex(0);
+            setStarted(true);
           }}
           className="px-10 py-4 text-lg font-semibold rounded-2xl shadow-lg 
-                     bg-gradient-to-r from-amber-400 to-orange-500 text-white 
+                     bg-gradient-to-r from-blue-500 to-sky-600 text-white 
                      hover:scale-105 hover:shadow-xl transition-all duration-300"
         >
           Start again
@@ -160,7 +207,7 @@ export default function Home() {
   // -----------------------------------------------------------
   return (
     <div
-      className="min-h-screen bg-gradient-to-br from-amber-100 via-stone-100 to-amber-200 
+      className="min-h-screen bg-gradient-to-br from-sky-100 via-slate-100 to-blue-200 
                     flex flex-col items-center justify-center text-stone-900 px-4 animate-fadeIn"
     >
       <h1 className="text-3xl sm:text-4xl font-semibold mb-8 sm:mb-10 tracking-wide text-stone-900 drop-shadow-sm">

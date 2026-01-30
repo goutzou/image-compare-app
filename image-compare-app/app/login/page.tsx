@@ -48,7 +48,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-100 via-stone-100 to-amber-200 flex items-center justify-center px-6">
+    <div className="min-h-screen bg-gradient-to-br from-sky-100 via-slate-100 to-blue-200 flex items-center justify-center px-6">
       <div className="bg-white/80 border border-stone-300 rounded-3xl shadow-2xl p-10 max-w-lg w-full text-center animate-fadeIn">
         <h1 className="text-4xl font-bold mb-4 text-stone-900 drop-shadow-sm">
           Sign in
@@ -65,7 +65,7 @@ export default function LoginPage() {
             <input
               value={username}
               onChange={(event) => setUsername(event.target.value)}
-              className="w-full rounded-2xl border border-stone-300 bg-white/90 px-4 py-3 text-stone-900 shadow-inner focus:outline-none focus:ring-2 focus:ring-amber-400"
+              className="w-full rounded-2xl border border-stone-300 bg-white/90 px-4 py-3 text-stone-900 shadow-inner focus:outline-none focus:ring-2 focus:ring-blue-400"
               placeholder="Enter username"
               autoComplete="username"
               required
@@ -79,7 +79,7 @@ export default function LoginPage() {
             <input
               value={password}
               onChange={(event) => setPassword(event.target.value)}
-              className="w-full rounded-2xl border border-stone-300 bg-white/90 px-4 py-3 text-stone-900 shadow-inner focus:outline-none focus:ring-2 focus:ring-amber-400"
+              className="w-full rounded-2xl border border-stone-300 bg-white/90 px-4 py-3 text-stone-900 shadow-inner focus:outline-none focus:ring-2 focus:ring-blue-400"
               placeholder="Enter password"
               type="password"
               autoComplete="current-password"
@@ -95,7 +95,7 @@ export default function LoginPage() {
             type="submit"
             disabled={submitting}
             className="px-6 py-3 text-lg font-semibold rounded-2xl shadow-lg 
-                       bg-gradient-to-r from-amber-400 to-orange-500 text-white 
+                       bg-gradient-to-r from-blue-500 to-sky-600 text-white 
                        hover:scale-105 hover:shadow-xl transition-all duration-300 disabled:opacity-70 disabled:hover:scale-100"
           >
             {submitting ? "Signing in..." : "Sign in"}

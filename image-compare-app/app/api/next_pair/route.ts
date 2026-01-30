@@ -3,8 +3,13 @@ import fs from "fs";
 import path from "path";
 
 export async function GET() {
-  const folder = path.join(process.cwd(), "public/images");
-  const files = fs.readdirSync(folder).filter((f) => f.endsWith(".jpeg"));
+  const folder = path.join(
+    process.cwd(),
+    "public/images/Different_Pictographs",
+  );
+  const files = fs
+    .readdirSync(folder)
+    .filter((file) => /\.(png|jpe?g)$/i.test(file));
 
   if (files.length < 2) {
     return NextResponse.json(
@@ -20,8 +25,12 @@ export async function GET() {
     idx2 = Math.floor(Math.random() * files.length);
   }
 
-  const imgA = `/images/${files[idx1]}`;
-  const imgB = `/images/${files[idx2]}`;
+  const imgA = `/images/Different_Pictographs/${encodeURIComponent(
+    files[idx1],
+  )}`;
+  const imgB = `/images/Different_Pictographs/${encodeURIComponent(
+    files[idx2],
+  )}`;
 
   return NextResponse.json({ imgA, imgB });
 }

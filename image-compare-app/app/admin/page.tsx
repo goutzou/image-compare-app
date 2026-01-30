@@ -5,7 +5,7 @@ import AdminAuthGate from "./AdminAuthGate";
 
 export default function AdminMenuPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-100 via-stone-100 to-amber-200 flex items-center justify-center px-6">
+    <div className="min-h-screen bg-gradient-to-br from-sky-100 via-slate-100 to-blue-200 flex items-center justify-center px-6">
       <AdminAuthGate />
       <div className="bg-white/80 border border-stone-300 rounded-3xl shadow-2xl p-10 max-w-xl w-full text-center animate-fadeIn">
         <h1 className="text-4xl font-bold mb-4 text-stone-900 drop-shadow-sm">
@@ -27,7 +27,7 @@ export default function AdminMenuPage() {
           <Link
             href="/compare"
             className="px-6 py-4 text-lg font-semibold rounded-2xl shadow-lg 
-                       bg-gradient-to-r from-amber-400 to-orange-500 text-white 
+                       bg-gradient-to-r from-blue-500 to-sky-600 text-white 
                        hover:scale-105 hover:shadow-xl transition-all duration-300"
           >
             Take the test

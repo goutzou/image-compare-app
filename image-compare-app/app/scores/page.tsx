@@ -32,7 +32,16 @@ function loadScores(): ScoresFile {
 
 function parsePairKey(key: string) {
   const parts = key.split("__");
-  return { imgA: parts[0] || "", imgB: parts[1] || "" };
+  const getFilename = (value: string) => {
+    const trimmed = value.trim();
+    const base = trimmed.split("/").pop() || trimmed;
+    try {
+      return decodeURIComponent(base);
+    } catch {
+      return base;
+    }
+  };
+  return { imgA: getFilename(parts[0] || ""), imgB: getFilename(parts[1] || "") };
 }
 
 export default function ScoresPage() {
@@ -40,7 +49,7 @@ export default function ScoresPage() {
   const entries = Object.entries(pairScores);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-100 via-stone-100 to-amber-200 px-6 py-10 text-stone-900">
+    <div className="min-h-screen bg-gradient-to-br from-sky-100 via-slate-100 to-blue-200 px-6 py-10 text-stone-900">
       <ScoresAuthGate />
       <div className="max-w-5xl mx-auto">
         <div className="flex items-center justify-between mb-8">

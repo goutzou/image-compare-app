@@ -1,31 +1,460 @@
 {
   "imageScores": {
     "/images/cool_guy.jpeg": {
-      "total": 490,
-      "votes": 197
+      "total": 498,
+      "votes": 227
     },
     "/images/cow.jpeg": {
-      "total": 490,
-      "votes": 197
+      "total": 498,
+      "votes": 227
+    },
+    "/images/Different_Pictographs/Pictograph_Farm_CowboyBoot.png": {
+      "total": 2,
+      "votes": 5
+    },
+    "/images/Different_Pictographs/Pictograph_Transportation_SchoolBus.png": {
+      "total": 2,
+      "votes": 4
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Dinosaur.png": {
+      "total": 3,
+      "votes": 6
+    },
+    "/images/Different_Pictographs/Pictograph_Fruit_Bananas.png": {
+      "total": 1,
+      "votes": 3
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Hippo.png": {
+      "total": 1,
+      "votes": 3
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Paw%20Print.png": {
+      "total": 3,
+      "votes": 6
+    },
+    "/images/Different_Pictographs/Pictograph_Sports%26Activities_Snowboard.png": {
+      "total": 2,
+      "votes": 5
+    },
+    "/images/Different_Pictographs/Pictograph_Sports%26Activities_Frisbee.png": {
+      "total": 0,
+      "votes": 1
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Bee.png": {
+      "total": 1,
+      "votes": 3
+    },
+    "/images/Different_Pictographs/Pictograph_School_Calculator.png": {
+      "total": 5,
+      "votes": 6
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Penguin.png": {
+      "total": 0,
+      "votes": 1
+    },
+    "/images/Different_Pictographs/Pictograph_Sports%26Activities_BaseballGlove.png": {
+      "total": 3,
+      "votes": 3
+    },
+    "/images/Different_Pictographs/Pictograph_Toys%26Fun_Dominos.png": {
+      "total": 2,
+      "votes": 3
+    },
+    "/images/Different_Pictographs/Pictograph_School_Pen%26Ink.png": {
+      "total": 0,
+      "votes": 2
+    },
+    "/images/Different_Pictographs/Pictograph_Food%26Drinks_Egg.png": {
+      "total": 1,
+      "votes": 2
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Manatee.png": {
+      "total": 2,
+      "votes": 3
+    },
+    "/images/Different_Pictographs/Pictograph_Sports%26Activities_RollerBlades.png": {
+      "total": 2,
+      "votes": 2
+    },
+    "/images/Similar_Pictographs/Pictograph_Animals_Alligator.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Similar_Pictographs/Pictograph_Animals_Lizard.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Similar_Pictographs/Pictograph_Animals_Mouse.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Similar_Pictographs/Pictograph_Animals_Squirrel.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Similar_Pictographs/Pictograph_Farm_WateringCan.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Similar_Pictographs/Pictograph_Food%26Drinks_Peanuts.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Similar_Pictographs/Pictograph_Food%26Drinks_Waffle.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Similar_Pictographs/Pictograph_Fruit_Pear.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Similar_Pictographs/Pictograph_Music_Guitar.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Similar_Pictographs/Pictograph_Music_Violin.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Similar_Pictographs/Pictograph_Objects_Club.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Similar_Pictographs/Pictograph_Objects_Spade.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Similar_Pictographs/Pictograph_Objects_TV.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Similar_Pictographs/Pictograph_School_Laptop.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Similar_Pictographs/Pictograph_Sports%26Activities_Basketball.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Similar_Pictographs/Pictograph_Vegetables_Artichoke.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Similar_Pictographs/Pictograph_Vegetables_Lettuce.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Similar_Pictographs/Pictograph_Vegetables_Pepper.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Similar_Pictographs/Pictograph_Vegetables_Pumpkin.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Similar_Pictographs/Pictograph_Vegetables_Tomato.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Different_Pictographs/Pictograph_Fruit_Strawberry.png": {
+      "total": 1,
+      "votes": 1
+    },
+    "/images/Different_Pictographs/Pictograph_Toys%26Fun_StackingTower.png": {
+      "total": 1,
+      "votes": 1
     }
   },
   "pairScores": {
     "/images/cool_guy.jpeg__/images/cow.jpeg": {
-      "total": 490,
-      "votes": 197,
-      "totalTimeMs": 16914,
-      "timeVotes": 50,
+      "total": 498,
+      "votes": 227,
+      "totalTimeMs": 48264,
+      "timeVotes": 80,
+      "avgTimeMs": 603
+    },
+    "/images/Different_Pictographs/Pictograph_Farm_CowboyBoot.png__/images/Different_Pictographs/Pictograph_Transportation_SchoolBus.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 2846,
+      "timeVotes": 1,
+      "avgTimeMs": 2846
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Dinosaur.png__/images/Different_Pictographs/Pictograph_Fruit_Bananas.png": {
+      "total": 1,
+      "votes": 2,
+      "totalTimeMs": 841,
+      "timeVotes": 2,
+      "avgTimeMs": 421
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Hippo.png__/images/Different_Pictographs/Pictograph_Animals_Paw%20Print.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 338,
+      "timeVotes": 1,
       "avgTimeMs": 338
+    },
+    "/images/Different_Pictographs/Pictograph_Fruit_Bananas.png__/images/Different_Pictographs/Pictograph_Sports%26Activities_Snowboard.png": {
+      "total": 0,
+      "votes": 1,
+      "totalTimeMs": 345,
+      "timeVotes": 1,
+      "avgTimeMs": 345
+    },
+    "/images/Different_Pictographs/Pictograph_Farm_CowboyBoot.png__/images/Different_Pictographs/Pictograph_Sports%26Activities_Frisbee.png": {
+      "total": 0,
+      "votes": 1,
+      "totalTimeMs": 293,
+      "timeVotes": 1,
+      "avgTimeMs": 293
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Bee.png__/images/Different_Pictographs/Pictograph_Animals_Hippo.png": {
+      "total": 0,
+      "votes": 1,
+      "totalTimeMs": 148,
+      "timeVotes": 1,
+      "avgTimeMs": 148
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Dinosaur.png__/images/Different_Pictographs/Pictograph_School_Calculator.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 218,
+      "timeVotes": 1,
+      "avgTimeMs": 218
+    },
+    "/images/Different_Pictographs/Pictograph_School_Calculator.png__/images/Different_Pictographs/Pictograph_Transportation_SchoolBus.png": {
+      "total": 0,
+      "votes": 1,
+      "totalTimeMs": 250,
+      "timeVotes": 1,
+      "avgTimeMs": 250
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Dinosaur.png__/images/Different_Pictographs/Pictograph_Animals_Hippo.png": {
+      "total": 0,
+      "votes": 1,
+      "totalTimeMs": 202,
+      "timeVotes": 1,
+      "avgTimeMs": 202
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Penguin.png__/images/Different_Pictographs/Pictograph_Farm_CowboyBoot.png": {
+      "total": 0,
+      "votes": 1,
+      "totalTimeMs": 205,
+      "timeVotes": 1,
+      "avgTimeMs": 205
+    },
+    "/images/Different_Pictographs/Pictograph_Sports%26Activities_BaseballGlove.png__/images/Different_Pictographs/Pictograph_Toys%26Fun_Dominos.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 280,
+      "timeVotes": 1,
+      "avgTimeMs": 280
+    },
+    "/images/Different_Pictographs/Pictograph_Toys%26Fun_Dominos.png__/images/Different_Pictographs/Pictograph_Transportation_SchoolBus.png": {
+      "total": 0,
+      "votes": 1,
+      "totalTimeMs": 217,
+      "timeVotes": 1,
+      "avgTimeMs": 217
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Dinosaur.png__/images/Different_Pictographs/Pictograph_School_Pen%26Ink.png": {
+      "total": 0,
+      "votes": 1,
+      "totalTimeMs": 203,
+      "timeVotes": 1,
+      "avgTimeMs": 203
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Bee.png__/images/Different_Pictographs/Pictograph_Animals_Paw%20Print.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 329,
+      "timeVotes": 1,
+      "avgTimeMs": 329
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Paw%20Print.png__/images/Different_Pictographs/Pictograph_Food%26Drinks_Egg.png": {
+      "total": 0,
+      "votes": 1,
+      "totalTimeMs": 178,
+      "timeVotes": 1,
+      "avgTimeMs": 178
+    },
+    "/images/Different_Pictographs/Pictograph_Farm_CowboyBoot.png__/images/Different_Pictographs/Pictograph_Sports%26Activities_Snowboard.png": {
+      "total": 0,
+      "votes": 1,
+      "totalTimeMs": 283,
+      "timeVotes": 1,
+      "avgTimeMs": 283
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Paw%20Print.png__/images/Different_Pictographs/Pictograph_Sports%26Activities_Snowboard.png": {
+      "total": 0,
+      "votes": 1,
+      "totalTimeMs": 192,
+      "timeVotes": 1,
+      "avgTimeMs": 192
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Manatee.png__/images/Different_Pictographs/Pictograph_Animals_Paw%20Print.png": {
+      "total": 0,
+      "votes": 1,
+      "totalTimeMs": 245,
+      "timeVotes": 1,
+      "avgTimeMs": 245
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Bee.png__/images/Different_Pictographs/Pictograph_School_Pen%26Ink.png": {
+      "total": 0,
+      "votes": 1,
+      "totalTimeMs": 223,
+      "timeVotes": 1,
+      "avgTimeMs": 223
+    },
+    "/images/Different_Pictographs/Pictograph_Sports%26Activities_RollerBlades.png__/images/Different_Pictographs/Pictograph_Sports%26Activities_Snowboard.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 265,
+      "timeVotes": 1,
+      "avgTimeMs": 265
+    },
+    "/images/Similar_Pictographs/Pictograph_Animals_Alligator.png__/images/Similar_Pictographs/Pictograph_Animals_Lizard.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 1949,
+      "timeVotes": 1,
+      "avgTimeMs": 1949
+    },
+    "/images/Similar_Pictographs/Pictograph_Animals_Mouse.png__/images/Similar_Pictographs/Pictograph_Animals_Squirrel.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 677,
+      "timeVotes": 1,
+      "avgTimeMs": 677
+    },
+    "/images/Similar_Pictographs/Pictograph_Farm_WateringCan.png__/images/Similar_Pictographs/Pictograph_Food%26Drinks_Peanuts.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 550,
+      "timeVotes": 1,
+      "avgTimeMs": 550
+    },
+    "/images/Similar_Pictographs/Pictograph_Food%26Drinks_Waffle.png__/images/Similar_Pictographs/Pictograph_Fruit_Pear.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 490,
+      "timeVotes": 1,
+      "avgTimeMs": 490
+    },
+    "/images/Similar_Pictographs/Pictograph_Music_Guitar.png__/images/Similar_Pictographs/Pictograph_Music_Violin.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 411,
+      "timeVotes": 1,
+      "avgTimeMs": 411
+    },
+    "/images/Similar_Pictographs/Pictograph_Objects_Club.png__/images/Similar_Pictographs/Pictograph_Objects_Spade.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 361,
+      "timeVotes": 1,
+      "avgTimeMs": 361
+    },
+    "/images/Similar_Pictographs/Pictograph_Objects_TV.png__/images/Similar_Pictographs/Pictograph_School_Laptop.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 492,
+      "timeVotes": 1,
+      "avgTimeMs": 492
+    },
+    "/images/Similar_Pictographs/Pictograph_Sports%26Activities_Basketball.png__/images/Similar_Pictographs/Pictograph_Vegetables_Artichoke.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 420,
+      "timeVotes": 1,
+      "avgTimeMs": 420
+    },
+    "/images/Similar_Pictographs/Pictograph_Vegetables_Lettuce.png__/images/Similar_Pictographs/Pictograph_Vegetables_Pepper.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 525,
+      "timeVotes": 1,
+      "avgTimeMs": 525
+    },
+    "/images/Similar_Pictographs/Pictograph_Vegetables_Pumpkin.png__/images/Similar_Pictographs/Pictograph_Vegetables_Tomato.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 460,
+      "timeVotes": 1,
+      "avgTimeMs": 460
+    },
+    "/images/Different_Pictographs/Pictograph_Sports%26Activities_Snowboard.png__/images/Different_Pictographs/Pictograph_Transportation_SchoolBus.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 386,
+      "timeVotes": 1,
+      "avgTimeMs": 386
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Manatee.png__/images/Different_Pictographs/Pictograph_Toys%26Fun_Dominos.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 531,
+      "timeVotes": 1,
+      "avgTimeMs": 531
+    },
+    "/images/Different_Pictographs/Pictograph_School_Calculator.png__/images/Different_Pictographs/Pictograph_Sports%26Activities_BaseballGlove.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 413,
+      "timeVotes": 1,
+      "avgTimeMs": 413
+    },
+    "/images/Different_Pictographs/Pictograph_School_Calculator.png__/images/Different_Pictographs/Pictograph_Sports%26Activities_RollerBlades.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 330,
+      "timeVotes": 1,
+      "avgTimeMs": 330
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Manatee.png__/images/Different_Pictographs/Pictograph_Fruit_Strawberry.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 270,
+      "timeVotes": 1,
+      "avgTimeMs": 270
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Paw%20Print.png__/images/Different_Pictographs/Pictograph_School_Calculator.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 314,
+      "timeVotes": 1,
+      "avgTimeMs": 314
+    },
+    "/images/Different_Pictographs/Pictograph_Animals_Dinosaur.png__/images/Different_Pictographs/Pictograph_Sports%26Activities_BaseballGlove.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 282,
+      "timeVotes": 1,
+      "avgTimeMs": 282
+    },
+    "/images/Different_Pictographs/Pictograph_Farm_CowboyBoot.png__/images/Different_Pictographs/Pictograph_Food%26Drinks_Egg.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 333,
+      "timeVotes": 1,
+      "avgTimeMs": 333
+    },
+    "/images/Different_Pictographs/Pictograph_School_Calculator.png__/images/Different_Pictographs/Pictograph_Toys%26Fun_StackingTower.png": {
+      "total": 1,
+      "votes": 1,
+      "totalTimeMs": 272,
+      "timeVotes": 1,
+      "avgTimeMs": 272
     }
   },
   "userScores": {
     "admin01": {
-      "total": 2,
-      "votes": 20,
-      "totalTimeMs": 5334,
-      "timeVotes": 20,
-      "avgTimeMs": 267,
-      "lastAnsweredAt": "2026-01-19T21:15:04.460Z"
+      "total": 36,
+      "votes": 90,
+      "totalTimeMs": 54251,
+      "timeVotes": 90,
+      "avgTimeMs": 603,
+      "lastAnsweredAt": "2026-01-30T06:45:20.812Z"
     }
   }
 }

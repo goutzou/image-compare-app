@@ -40,7 +40,7 @@ export default function UserHistoryPage() {
   const entries = Object.entries(userScores);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-100 via-stone-100 to-amber-200 px-6 py-10 text-stone-900">
+    <div className="min-h-screen bg-gradient-to-br from-sky-100 via-slate-100 to-blue-200 px-6 py-10 text-stone-900">
       <AdminAuthGate />
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-8">
