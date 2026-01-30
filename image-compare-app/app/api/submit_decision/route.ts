@@ -10,7 +10,28 @@ const FILE_PATH = path.resolve("./data/scores.json");
 // ------------------------------------------------------------
 // LOAD EXISTING SCORES ON SERVER START
 // ------------------------------------------------------------
-function loadScores() {
+type ImageScore = { total: number; votes: number };
+type PairScore = {
+  total: number;
+  votes: number;
+  totalTimeMs: number;
+  timeVotes: number;
+  avgTimeMs: number;
+};
+type UserScore = {
+  total: number;
+  votes: number;
+  totalTimeMs: number;
+  timeVotes: number;
+  avgTimeMs: number;
+  lastAnsweredAt: string;
+};
+
+function loadScores(): {
+  imageScores: Record<string, ImageScore>;
+  pairScores: Record<string, PairScore>;
+  userScores: Record<string, UserScore>;
+} {
   if (!fs.existsSync(FILE_PATH)) {
     return { imageScores: {}, pairScores: {}, userScores: {} };
   }
@@ -18,9 +39,9 @@ function loadScores() {
   try {
     const raw = fs.readFileSync(FILE_PATH, "utf8");
     const parsed = JSON.parse(raw) as {
-      imageScores?: Record<string, { total: number; votes: number }>;
-      pairScores?: Record<string, Record<string, unknown>>;
-      userScores?: Record<string, Record<string, unknown>>;
+      imageScores?: Record<string, ImageScore>;
+      pairScores?: Record<string, PairScore>;
+      userScores?: Record<string, UserScore>;
     };
     return {
       imageScores: parsed.imageScores || {},
