@@ -21,6 +21,7 @@ export default function Home() {
   const [username, setUsername] = useState<string | null>(null);
   const [pairs, setPairs] = useState<Pair[]>([]);
   const [pairIndex, setPairIndex] = useState(0);
+  const [showReminder, setShowReminder] = useState(false);
 
   function shufflePairs(list: Pair[]) {
     const shuffled = [...list];
@@ -42,16 +43,31 @@ export default function Home() {
     const differentPairs = Array.isArray(data.differentPairs)
       ? data.differentPairs
       : [];
-    const targetCount = 20;
+    const targetCount = 80;
+    const selfPairCount = Math.max(1, Math.round(targetCount * 0.1));
+    const baseCount = Math.max(0, targetCount - selfPairCount);
     const shuffledDifferent = shufflePairs(differentPairs);
     let selected = [...similarPairs];
-    if (selected.length < targetCount) {
+    if (selected.length < baseCount) {
       selected = selected.concat(
-        shuffledDifferent.slice(0, targetCount - selected.length),
+        shuffledDifferent.slice(0, baseCount - selected.length),
       );
-    } else if (selected.length > targetCount) {
-      selected = selected.slice(0, targetCount);
+    } else if (selected.length > baseCount) {
+      selected = selected.slice(0, baseCount);
     }
+    const imagePool = [...similarPairs, ...differentPairs].flatMap((pair) => [
+      pair.imgA,
+      pair.imgB,
+    ]);
+    const selfPairs: Pair[] =
+      imagePool.length === 0
+        ? []
+        : Array.from({ length: selfPairCount }, () => {
+            const img =
+              imagePool[Math.floor(Math.random() * imagePool.length)];
+            return { imgA: img, imgB: img };
+          });
+    selected = shufflePairs([...selected, ...selfPairs]).slice(0, targetCount);
     setPairs(selected);
     setPairIndex(0);
     if (selected.length > 0) {
@@ -87,7 +103,7 @@ export default function Home() {
 
     setAnswersCount((prev) => {
       const next = prev + 1;
-      if (next >= 20 || next >= pairs.length) {
+      if (next >= 80 || next >= pairs.length) {
         setFinished(true);
         return next;
       }
@@ -100,6 +116,7 @@ export default function Home() {
       }
       return next;
     });
+    setShowReminder(false);
   }
 
   useEffect(() => {
@@ -107,6 +124,18 @@ export default function Home() {
       loadTest();
     }
   }, [started, finished, pairs.length]);
+
+  useEffect(() => {
+    if (!started || finished || loading || !imgA || !imgB) {
+      setShowReminder(false);
+      return;
+    }
+    setShowReminder(false);
+    const timer = window.setTimeout(() => {
+      setShowReminder(true);
+    }, 5000);
+    return () => window.clearTimeout(timer);
+  }, [started, finished, loading, imgA, imgB]);
 
   useEffect(() => {
     const storedRole = window.localStorage.getItem("role");
@@ -150,13 +179,14 @@ export default function Home() {
         className="min-h-screen bg-gradient-to-br from-sky-100 via-slate-100 to-blue-200 
                       flex flex-col items-center justify-center text-stone-800 px-6 text-center animate-fadeIn"
       >
-        <h1 className="text-5xl font-bold mb-6 tracking-wide text-stone-900 drop-shadow-sm">
-          Welcome
+        <h1 className="text-4xl font-bold mb-6 tracking-wide text-stone-900 drop-shadow-sm">
+          Instructions
         </h1>
 
-        <p className="text-xl text-stone-700 max-w-xl mb-10 leading-relaxed">
-          You will see two images at a time and decide whether they are similar
-          or different.
+        <p className="text-lg text-stone-700 max-w-2xl mb-8 leading-relaxed">
+          Try to decide whether the two images are the same or different as fast
+          as possible. Click the on-screen buttons, or press <span className="font-semibold">s</span>{" "}
+          for Same and <span className="font-semibold">d</span> for Different.
         </p>
 
         <button
@@ -165,7 +195,7 @@ export default function Home() {
                      bg-gradient-to-r from-blue-500 to-sky-600 text-white 
                      hover:scale-105 hover:shadow-xl transition-all duration-300"
         >
-          Let’s Get Started
+          Start
         </button>
       </div>
     );
@@ -210,6 +240,13 @@ export default function Home() {
       className="min-h-screen bg-gradient-to-br from-sky-100 via-slate-100 to-blue-200 
                     flex flex-col items-center justify-center text-stone-900 px-4 animate-fadeIn"
     >
+      {showReminder && (
+        <div className="fixed top-5 left-1/2 -translate-x-1/2 z-50">
+          <div className="bg-white/90 backdrop-blur-sm text-stone-900 border border-stone-200 shadow-lg rounded-full px-6 py-3 text-base font-semibold">
+            Please choose Same or Different
+          </div>
+        </div>
+      )}
       <h1 className="text-3xl sm:text-4xl font-semibold mb-8 sm:mb-10 tracking-wide text-stone-900 drop-shadow-sm">
         Image Comparison
       </h1>
@@ -218,8 +255,8 @@ export default function Home() {
         {[imgA, imgB].map((src, idx) => (
           <div
             key={idx}
-            className="w-64 h-64 sm:w-80 sm:h-80 bg-white/80 backdrop-blur-sm border border-stone-300 
-                       rounded-2xl overflow-hidden shadow-xl flex items-center justify-center"
+            className="w-40 h-40 sm:w-48 sm:h-48 bg-white/80 backdrop-blur-sm border border-stone-300 
+                       rounded-full overflow-hidden shadow-xl flex items-center justify-center"
           >
             {!loading && src ? (
               <img
@@ -243,7 +280,7 @@ export default function Home() {
                      bg-gradient-to-r from-emerald-500 to-emerald-700
                      hover:scale-105 shadow-md hover:shadow-lg transition-all duration-300"
         >
-          Similar
+          Same
         </button>
 
         <button
